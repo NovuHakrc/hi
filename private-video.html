@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Video</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        #login {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 350px;
+            margin: auto;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        #error {
+            color: #ff5555;
+            margin-top: 10px;
+            display: none;
+        }
+
+        #video {
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="login">
+            <h2>Enter Password</h2>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                onkeydown="if(event.key === 'Enter') checkPassword()"
+            >
+
+            <button onclick="checkPassword()">Enter</button>
+
+            <div id="error">Incorrect password.</div>
+        </div>
+
+        <div id="video">
+            <iframe
+                src="https://streamable.com/e/9io7hz"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
+
+    <script>
+        const PASSWORD = "exniclarkmakati";
+
+        function checkPassword() {
+            const enteredPassword =
+                document.getElementById("password").value;
+
+            const error =
+                document.getElementById("error");
+
+            if (enteredPassword === PASSWORD) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("video").style.display = "block";
+            } else {
+                error.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
